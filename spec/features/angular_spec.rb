@@ -9,6 +9,7 @@ describe 'angular', js: true do
   end
 
   it 'works!' do
+    ss('thanabodeekrathu')
     expect(page).to have_content 'Greeting!'
   end
 
@@ -19,5 +20,25 @@ describe 'angular', js: true do
   it 'can go to second page' do
     click_link 'Second'
     expect(page).to have_content 'Seccond page'
+  end
+
+  #Homework Rails test
+  it 'can go to third page' do
+    click_link 'Third'
+    expect(page).to have_content 'Third page'
+  end
+
+  #Train Rails test
+  it 'can reset password' do
+    sign_out
+
+    visit '/users/password/new'
+
+    fill_in 'Email', with: normal_user.email
+    expect(normal_user.reload.reset_password_token).to be_nil
+    click_button('Send me reset password instructions')
+    sleep 1
+
+    expect(normal_user.reload.reset_password_token).to_not be_nil
   end
 end
