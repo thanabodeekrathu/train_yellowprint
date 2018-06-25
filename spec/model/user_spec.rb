@@ -1,17 +1,6 @@
 require 'rails_helper'
 
 describe User do
-  # before :all do #do after "it" test one time
-  #   puts 'all'
-  # end
-
-  # before :each do #do before each "it" test
-  #   puts 'before each'
-  # end
-
-  # after :each do #do after each "it" test
-  #   puts 'after each'
-  # end
 
   let(:user) { FactoryBot.create :user }
 
@@ -35,10 +24,6 @@ describe User do
     it 'can delete' do
       #delete user
       expect{ user.destroy }.to change{ User.count }.by(-1)
-      
-      # expect do 
-      #   User.last.destroy 
-      # end.to change{ User.count }.by(-1)
     end
 
     it 'can update' do
